@@ -24,7 +24,7 @@ const initializeServer = async (port) =>
 app.use(morgan("dev"));
 app.use(express.json());
 
-app.use("/things", thingsRouter);
+app.use("/tech", thingsRouter);
 
 app.use(notFoundError);
 app.use(generalError);
