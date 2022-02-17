@@ -1,5 +1,6 @@
 const express = require("express");
 const debug = require("debug")("W6CH4:server");
+const morgan = require("morgan");
 
 const app = express();
 
@@ -17,5 +18,8 @@ const initializeServer = async (port) =>
       reject(new Error(errorMessage));
     });
   });
+
+app.use(morgan());
+app.use(express.json());
 
 module.exports = initializeServer;
