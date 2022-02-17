@@ -7,9 +7,9 @@ const notFoundError = (req, res) => {
 
 // eslint-disable-next-line no-unused-vars
 const generalError = (err, req, res, next) => {
-  debug("Internal error");
+  debug("Internal server error");
   res.status(500);
-  res.json({ error: "Internal error" });
+  res.json({ error: "Internal server error" });
 };
 
 module.exports = { notFoundError, generalError };

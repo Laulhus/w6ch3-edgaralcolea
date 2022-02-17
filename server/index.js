@@ -1,6 +1,7 @@
 const express = require("express");
 const debug = require("debug")("W6CH4:server");
 const morgan = require("morgan");
+const { notFoundError, generalError } = require("./middlewares/errors");
 
 const app = express();
 
@@ -19,7 +20,10 @@ const initializeServer = async (port) =>
     });
   });
 
-app.use(morgan());
+app.use(morgan("dev"));
 app.use(express.json());
+
+app.use(notFoundError);
+app.use(generalError);
 
 module.exports = initializeServer;
