@@ -2,6 +2,7 @@ const express = require("express");
 const debug = require("debug")("W6CH4:server");
 const morgan = require("morgan");
 const { notFoundError, generalError } = require("./middlewares/errors");
+const thingsRouter = require("./routers/thingsRouter");
 
 const app = express();
 
@@ -22,6 +23,8 @@ const initializeServer = async (port) =>
 
 app.use(morgan("dev"));
 app.use(express.json());
+
+app.use("/things", thingsRouter);
 
 app.use(notFoundError);
 app.use(generalError);
